@@ -3,13 +3,18 @@ const { urlencoded } = require('express');
 const bcrypt = require('bcrypt');
 const express = require('express');
 const app = express();
-
+const fs = require('fs');
 
 // App use methods
 app.use(express.static("public"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// Routers 
+const motorhomeRouter = require('./routes/motorhomeRoutes.js');
+
+// App use exported modules
+app.use(motorhomeRouter.router);
 
 // Get HTTP requests
 app.get('/', (req, res) => {
