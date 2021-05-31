@@ -25,22 +25,22 @@ app.get('/motorhomes', (req, res) => {
     res.sendFile(__dirname + "/public/motorhomes/motorhomes.html");
 });
 
-app.get('/customers', (req, res) => {
-    res.sendFile(__dirname + "/public/customers/customers.html");
+app.get('/createnewmotorhome', (req, res) => {
+    res.sendFile(__dirname + '/public/createnewmotorhome/createnewmotorhome.html');
 });
-
-app.get('/rentalContracts', (req, res) => {
-    res.sendFile(__dirname + "/public/rentalContracts/rentalContracts.html");
-});
-
 
 // Post HTTP requests
-app.post('/logIn', (req, res) => {
+app.post('/motorhomes', (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
     console.log(username + " " + password);
 
     res.sendFile(__dirname + "/public/homePage/homePage.html");
+});
+
+app.post('/createnewmotorhome', (req, res) => {
+    motorhomeRouter.create;
+    res.sendFile(__dirname + "/public/motorhomes/motorhomes.html")
 });
 
 // Method for starting the server
