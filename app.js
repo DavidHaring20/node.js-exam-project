@@ -1,10 +1,20 @@
 // Imports/requirements
-const { urlencoded } = require('express');
-const bcrypt = require('bcrypt');
-const express = require('express');
-const app = express();
-const fs = require('fs');
+const { urlencoded }    = require('express');
+const bcrypt            = require('bcrypt');
+const express           = require('express');
+const app               = express();
+const mongoose          = require('mongoose');
 
+mongoose.connect('mongodb://localhost:27017/testdb', { useNewUrlParser: true, useUnifiedTopology: true });
+const db = mongoose.connection; 
+
+db.on('error', (error) => {
+    console.log(error);
+})
+
+db.once('open', () => {
+    console.log("Connection to database is successfull.");
+})   
 // App use methods
 app.use(express.static("public"));
 app.use(express.json());
@@ -39,7 +49,6 @@ app.post('/motorhomes', (req, res) => {
 });
 
 app.post('/createnewmotorhome', (req, res) => {
-    motorhomeRouter.create;
     res.sendFile(__dirname + "/public/motorhomes/motorhomes.html")
 });
 
