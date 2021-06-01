@@ -47,7 +47,7 @@ let createMotorhome = (req, res, next) => {
     motorhome.save()
     .then(response => {
         res.json({
-            message: "Employee Added !"
+            message: "Motorhome Added !"
         })
     })
     .catch(error => {
@@ -92,11 +92,6 @@ const deleteMotorhome = (req, res, next) => {
     .then(() => {
         res.json({
             message: "Motorhome Deleted with ID: " + motorhomeID
-        })
-    })
-    .catch(() => {
-        res.json({
-            message
         })
     })
     .catch(
