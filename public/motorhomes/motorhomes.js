@@ -1,13 +1,15 @@
-// fetch("/api/motorhomes").then(res => res.json()).then(res => console.log(res));
+// fetch("/api/motorhome/").then(res => res.json()).then(res => console.log(res.response));
 
 (async function read() {
     try {
-        const response = await fetch("/api/motorhomes");
-        const result = await response.json();   
+        const response = await fetch("/api/motorhome/");
+        const result = await response.json();  
+        let motorhomeArray = await result.response;
+        console.log("Motorhome array: " + motorhomeArray);
 
         const motorhomesDiv = document.getElementById('motorhome-list');
 
-        result.motorhomeArray.map(motorhome => {
+        motorhomeArray.map(motorhome => {
             const motorhomeDiv = document.createElement('div');
             motorhomeDiv.classList.add('motorhome-div');
 
