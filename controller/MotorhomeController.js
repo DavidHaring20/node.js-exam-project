@@ -17,7 +17,7 @@ const readMotorhomes = (req, res, next) => {
 
 // Search for specific motorhome by brand
 const searchMotorhomeByBrand = (req, res, next) => {
-    let motorhomeBrand = req.body.motorhomeBrand;
+    let motorhomeBrand = req.body.brand;
     Motorhome.find({ 'brand': motorhomeBrand})
     .then(response => {
         res.json({

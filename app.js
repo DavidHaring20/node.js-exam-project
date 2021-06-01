@@ -4,8 +4,9 @@ const bcrypt            = require('bcrypt');
 const express           = require('express');
 const app               = express();
 const mongoose          = require('mongoose');
+const bodyparser        = require('body-parser');
 
-mongoose.connect('mongodb://localhost:27017/testdb', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb://localhost:27017/nordicMotorhomeRentalDb', { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection; 
 
 db.on('error', (error) => {
@@ -17,14 +18,14 @@ db.once('open', () => {
 })   
 // App use methods
 app.use(express.static("public"));
-app.use(express.json());
+app.use(bodyparser.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Routers 
 const motorhomeRouter = require('./routes/motorhomeRoutes.js');
 
 // App use exported modules
-app.use(motorhomeRouter.router);
+app.use('/api/motorhome', motorhomeRouter.router);
 
 // Get HTTP requests
 app.get('/', (req, res) => {
