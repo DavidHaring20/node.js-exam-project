@@ -25,6 +25,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // Routers 
 const motorhomeRouter = require('./routes/motorhomeRoutes.js');
+const MotorhomeController = require('./controller/MotorhomeController.js');
 
 // App use exported modules
 app.use('/api/motorhome', motorhomeRouter.router);
@@ -52,7 +53,19 @@ app.post('/homePage', (req, res) => {
 });
 
 app.post('/createnewmotorhome', (req, res) => {
-    res.sendFile(__dirname + "/public/motorhomes/motorhomes.html")
+    console.log(req.body);
+    MotorhomeController.createMotorhome(
+        req.body.brand,
+        req.body.model,
+        req.body.type,
+        req.body.gasType,
+        req.body.numberOfSeats,
+        req.body.odometer,
+        req.body.yearOfManufacture,
+        req.body.condition,
+        req.body.additionalInfo
+    );
+    res.redirect('/motorhomes');
 });
 
 // Method for starting the server

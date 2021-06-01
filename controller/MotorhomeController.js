@@ -32,17 +32,17 @@ const searchMotorhomeByBrand = (req, res, next) => {
 };
 
 // Create new motorhome
-let createMotorhome = (req, res, next) => {
+let createMotorhome = (brand, model, type, gasType, numberOfSeats, odometer, yearOfManufacture, condition, additionalInfo, req, res, next) => {
     let motorhome = new Motorhome({
-        brand : req.body.brand,
-        model : req.body.model,
-        type : req.body.type,
-        gasType : req.body.gasType,
-        numberOfSeats : req.body.numberOfSeats,
-        odometer : req.body.odometer,
-        yearOfManufacture : req.body.yearOfManufacture,
-        condition : req.body.condition,
-        additionalInfo: req.body.additionalInfo
+        brand : brand,
+        model : model,
+        type : type,
+        gasType : gasType,
+        numberOfSeats : numberOfSeats,
+        odometer : odometer,
+        yearOfManufacture : yearOfManufacture,
+        condition : condition,
+        additionalInfo: additionalInfo
     });
     motorhome.save()
     .then(response => {
@@ -88,17 +88,17 @@ const updateMotorhome = (req, res, next) => {
 // Delete a motorhome by ID
 const deleteMotorhome = (req, res, next) => {
     let motorhomeID = req.body.motorhomeID;
-    Motorhome.findByIdAndRemove(motorhomeID)
+    Motorhome.findByIdAndRemove(motorhomeID, {useFindAndModify: false})
     .then(() => {
         res.json({
             message: "Motorhome Deleted with ID: " + motorhomeID
         })
     })
-    .catch(
+    .catch(() => {
         res.json({
-            message: "Error occured"
+            message: "Error occured !"
         })
-    )
+    })
 }
 
 module.exports = {
