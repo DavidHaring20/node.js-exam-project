@@ -1,0 +1,22 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    margin-top: 0;
+} 
+
+.header {
+    background-color: lightgreen;
+    padding: 2rem 1rem 1rem 1rem;
+}
+
+.create-space {
+    display: flex; 
+}
+
+.create-div {
+    align-items: center;
+    
+}

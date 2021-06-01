@@ -4,40 +4,65 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="createnewmotorhome.css">
     <title>Create New Motorhome | Nordic Motorhome Rental</title>
 </head>
 <body>
-    <h1>Create new motorhome</h1>
+    <div class="header">
+        <h1>Create new motorhome</h1>
+    </div>
 
-    <form action="/createnewmotorhome" method="post">
-        <label for="">Brand</label>
-        <input type="text" name="brand"><br>
+    <div class="create-space">
+        <div class="create-div">
+            <form action="/createnewmotorhome" method="post">
+                <div class="form-div">
+                    <label for="">Brand: </label>
+                    <input type="text" name="brand"><br>
+                </div>
 
-        <label for="">Model</label>
-        <input type="text" name="model"><br>
+                <div class="form-div">
+                    <label for="">Model: </label>
+                    <input type="text" name="model"><br>
+                </div>
 
-        <label for="">Type</label>
-        <input type="text" name="type"><br>
+                <div class="form-div">
+                    <label for="">Type: </label>
+                    <input type="text" name="type"><br>
+                </div>
 
-        <label for="">Gas Type</label>
-        <input type="text" name="gasType"><br>
+                <div class="form-div">
+                    <label for="">Gas Type: </label>
+                    <input type="text" name="gasType"><br>
+                </div>
 
-        <label for="">Number of Seats</label>
-        <input type="text" name="numberOfSeats"><br>
+                <div class="form-div">
+                    <label for="">Number of Seats: </label>
+                    <input type="text" name="numberOfSeats"><br>
+                </div>
 
-        <label for="">Odometer</label>
-        <input type="number" name="odometer"><br>
+                <div class="form-div">
+                    <label for="">Odometer: </label>
+                    <input type="number" name="odometer"><br>
+                </div>
 
-        <label for="">Year of manufacture</label>
-        <input type="text" name="yearOfManufacture"><br>
+                <div class="form-div">
+                    <label for="">Year of manufacture: </label>
+                    <input type="text" name="yearOfManufacture"><br>
+                </div>
 
-        <label for="">Condition</label>
-        <input type="text" name="condition"><br>
+                <div class="form-div">
+                    <label for="">Condition: </label>
+                    <input type="text" name="condition"><br>
+                </div>
 
-        <label for="">Additional info</label>
-        <input type="text" name="additionalInfo"><br>
+                <div class="form-div">
+                    <label for="">Additional info: </label>
+                    <input type="text" name="additionalInfo"><br>
+                </div>
 
-        <button type="submit">Create Motorhome</button>
-    </form>
+                <button type="submit">Create Motorhome</button>
+            </form>
+        </div>
+    </div>
 </body>
 </html>

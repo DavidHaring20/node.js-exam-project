@@ -4,19 +4,34 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="logIn.css">
     <title>Log In | Nordic Motorhome Rental</title>
 </head>
 <body>
-    <h1>Log In</h1>
 
-    <form method="POST" action="/homePage">
-        <label>Username :</label>
-        <input type="text" class="username-input" name="username">
-        
-        <label>Password :</label>
-        <input type="text" class="password-input" name="password">
+    <div class="header">
+        <h1>Nordic Motorhome Rental App</h1>
+    </div>
 
-        <button type="submit">Log In</button>
-    </form>
+    <div class="login-space">
+        <div class="login-div">
+            <form method="POST" action="/homePage" class="login-form">
+
+                <h2>Please Login</h2>
+
+                <div class="div-form">
+                    <label>Username :</label>
+                    <input type="text" class="username-input" name="username">
+                </div>
+                
+                <div class="div-form extra-bottom-margin">
+                    <label>Password :</label>
+                    <input type="text" class="password-input" name="password">
+                </div>
+
+                <button type="submit">Log In</button>
+            </form>
+        </div>
+    </div>
 </body>
 </html>

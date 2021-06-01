@@ -1,0 +1,44 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    margin-top: 0;
+} 
+
+.header {
+    background-color: lightgreen;
+    padding: 2rem 1rem 1rem 1rem;
+}
+
+.control-div {
+    margin: 3em 2em;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: lightgreen;
+    color: black;
+    border-radius: 0.5rem;
+}
+
+.motorhome-div {
+    margin: 3em 2em;
+}
+
+.div-short-data1, .div-short-data2 {
+    display: flex;
+    flex-direction: row;
+}
+
+.brand, .model, .type, .gasType, .numberOfSeats, 
+.odometer, .yearOfManufacture, .condition {
+    width: 100%;
+    margin-bottom: 1rem;
+} 
+
+.horizontal-line {
+    margin-top: 2rem;
+    margin-bottom: 5rem;
+}

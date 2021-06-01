@@ -1,0 +1,41 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    margin-top: 0;
+} 
+
+.header {
+    background-color: lightgreen;
+    padding: 2rem 1rem 1rem 1rem;
+}
+
+.create-space {
+    height: 90vh;
+    position: relative;
+    left: 5em;
+    top: 5em;
+}
+
+.create-div {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-div {
+    height: 5vh;
+}
+
+label, input {
+    font-size: 1.3rem;
+}
+
+button {
+    margin-top: 3em;
+    padding: 10px 20px;
+    background-color: lightgreen;
+    color: black;
+    border-radius: 0.5rem;
+}

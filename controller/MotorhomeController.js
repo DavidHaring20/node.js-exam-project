@@ -8,7 +8,7 @@ const readMotorhomes = (req, res, next) => {
             response
         })
     })
-    .catch(error => {
+    .catch(() => {
         res.json({
             message: "Error Occured !"
         })
@@ -24,7 +24,7 @@ const searchMotorhomeByBrand = (req, res, next) => {
             response
         }) 
     })
-    .catch(error => {
+    .catch(() => {
         res.json({
             message: "Error Occured !"
         })
@@ -50,7 +50,7 @@ let createMotorhome = (brand, model, type, gasType, numberOfSeats, odometer, yea
             message: "Motorhome Added !"
         })
     })
-    .catch(error => {
+    .catch(() => {
         res.json({
             message: "Error Occured !"
         })
