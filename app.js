@@ -6,6 +6,7 @@ const app               = express();
 const mongoose          = require('mongoose');
 const bodyparser        = require('body-parser');
 
+// Connection to database for development
 mongoose.connect('mongodb://localhost:27017/nordicMotorhomeRentalDb', { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection; 
 
@@ -16,6 +17,7 @@ db.on('error', (error) => {
 db.once('open', () => {
     console.log("Connection to database is successfull.");
 })   
+
 // App use methods
 app.use(express.static("public"));
 app.use(bodyparser.json());
@@ -28,7 +30,7 @@ const motorhomeRouter = require('./routes/motorhomeRoutes.js');
 app.use('/api/motorhome', motorhomeRouter.router);
 
 // Get HTTP requests
-app.get('/', (req, res) => {
+app.get('/login', (req, res) => {
     res.sendFile(__dirname + "/public/logIn/logIn.html");
 });
 
@@ -41,7 +43,7 @@ app.get('/createnewmotorhome', (req, res) => {
 });
 
 // Post HTTP requests
-app.post('/motorhomes', (req, res) => {
+app.post('/homePage', (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
     console.log(username + " " + password);
