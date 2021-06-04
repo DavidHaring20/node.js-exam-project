@@ -45,15 +45,11 @@ let createMotorhome = (brand, model, type, gasType, numberOfSeats, odometer, yea
         additionalInfo: additionalInfo
     });
     motorhome.save()
-    .then(response => {
-        res.json({
-            message: "Motorhome Added !"
-        })
+    .then(() => {
+        console.log("Motorhome created succesfully.");
     })
-    .catch(() => {
-        res.json({
-            message: "Error Occured !"
-        })
+    .catch(error => {
+        console.log(error);
     });
 };
 
@@ -86,18 +82,13 @@ const updateMotorhome = (req, res, next) => {
 };
 
 // Delete a motorhome by ID
-const deleteMotorhome = (req, res, next) => {
-    let motorhomeID = req.body.motorhomeID;
+const deleteMotorhome = (motorhomeID, req, res, next) => {
     Motorhome.findByIdAndRemove(motorhomeID, {useFindAndModify: false})
     .then(() => {
-        res.json({
-            message: "Motorhome Deleted with ID: " + motorhomeID
-        })
+        console.log("Motorhome delete succesfully with ID: " + motorhomeID);
     })
-    .catch(() => {
-        res.json({
-            message: "Error occured !"
-        })
+    .catch(error => {
+        console.log(error);
     })
 }
 

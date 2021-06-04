@@ -5,7 +5,6 @@
         const response = await fetch("/api/motorhome/");
         const result = await response.json();  
         let motorhomeArray = await result.response;
-        console.log("Motorhome array: " + motorhomeArray);
 
         const motorhomesDiv = document.getElementById('motorhome-list');
 
@@ -68,6 +67,30 @@
             const divLongData = document.createElement('div');
             divLongData.classList.add('div-long-data');
 
+            const divButtons = document.createElement('div');
+            divButtons.classList.add('div-buttons');
+
+            // FORMS
+            // Delete form
+            let id = motorhome._id;
+            let deleteForm = document.createElement('form');
+            deleteForm.setAttribute('method', 'post');
+            deleteForm.setAttribute('action', '/deletemotorhome/' + id); 
+
+            // Delete button
+            const deleteButton = document.createElement('button');
+            deleteButton.classList.add('delete');
+            deleteButton.innerText = "Delete Motorhome";
+            deleteButton.setAttribute('type', 'submit');
+
+            // Add Delete Button to Delete Form
+            deleteForm.appendChild(deleteButton);
+
+            // // Update button
+            // const updateButton = document.createElement('button');
+            // updateButton.classList.add('update');
+            // updateButton.innerText = "Update Motorhome";
+
             // Horizontal line to make it more readable
             const horizontalLine = document.createElement('hr');
             horizontalLine.classList.add('horizontal-line');
@@ -84,9 +107,13 @@
 
             divLongData.appendChild(additionalInfo);
 
+            divButtons.appendChild(deleteForm);
+            // divButtons.appendChild(updateButton);
+
             motorhomeDiv.appendChild(divShortData1);
             motorhomeDiv.appendChild(divShortData2);            
             motorhomeDiv.appendChild(divLongData);
+            motorhomeDiv.appendChild(divButtons);            
             motorhomeDiv.appendChild(horizontalLine);
 
             // Append every div for each motorhome to div in html

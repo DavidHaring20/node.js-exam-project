@@ -47,8 +47,8 @@ app.get('/createnewmotorhome', (req, res) => {
     res.sendFile(__dirname + '/public/createnewmotorhome/createnewmotorhome.html');
 });
 
-console.log(__dirname);
 // Post HTTP requests
+// Log in post method
 app.post('/homePage', (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
@@ -57,8 +57,8 @@ app.post('/homePage', (req, res) => {
     res.redirect('/homepage');
 });
 
+// Creating new Motorhome
 app.post('/createnewmotorhome', (req, res) => {
-    console.log(req.body);
     MotorhomeController.createMotorhome(
         req.body.brand,
         req.body.model,
@@ -70,6 +70,14 @@ app.post('/createnewmotorhome', (req, res) => {
         req.body.condition,
         req.body.additionalInfo
     );
+    res.redirect('/motorhomes');
+});
+
+// Deleting the Motorhome
+app.post('/deletemotorhome/:id', (req, res) => {
+    let motorhomeID = req.params.id;
+    MotorhomeController.deleteMotorhome(motorhomeID);
+
     res.redirect('/motorhomes');
 });
 
