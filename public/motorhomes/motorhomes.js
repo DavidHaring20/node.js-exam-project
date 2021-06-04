@@ -95,7 +95,8 @@
             const horizontalLine = document.createElement('hr');
             horizontalLine.classList.add('horizontal-line');
 
-            // Append all data to one div which will be later appended to div in html
+            // Firstly append data to smaller divs and then later to one div as a whole
+            // Short info like: type, model, brand...
             divShortData1.appendChild(brand);
             divShortData1.appendChild(model);
             divShortData1.appendChild(type);
@@ -105,11 +106,16 @@
             divShortData2.appendChild(yearOfManufacture);
             divShortData2.appendChild(condition);
 
+            // Additional info
             divLongData.appendChild(additionalInfo);
 
-            divButtons.appendChild(deleteForm);
-            // divButtons.appendChild(updateButton);
+            // Buttons
+            deleteDiv.appendChild(deleteForm);
+            updateDiv.appendChild(updateLink);
+            divButtons.appendChild(deleteDiv);
+            divButtons.appendChild(updateDiv);
 
+            // Appending everything to one div as a whole
             motorhomeDiv.appendChild(divShortData1);
             motorhomeDiv.appendChild(divShortData2);            
             motorhomeDiv.appendChild(divLongData);

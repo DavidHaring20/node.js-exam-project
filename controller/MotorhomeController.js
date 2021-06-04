@@ -31,6 +31,17 @@ const searchMotorhomeByBrand = (req, res, next) => {
     })
 };
 
+// Search for a specific motorhome by ID
+const searchMotorhomeById = (motorhomeID, req, res, next) => {
+    Motorhome.findById(motorhomeID)
+    .then(() => {
+        console.log("Motorhome with ID: " + motorhomeID + " is found.");
+    })
+    .catch(error => {
+        console.log(error);
+    })
+}
+
 // Create new motorhome
 let createMotorhome = (brand, model, type, gasType, numberOfSeats, odometer, yearOfManufacture, condition, additionalInfo, req, res, next) => {
     let motorhome = new Motorhome({
@@ -93,6 +104,6 @@ const deleteMotorhome = (motorhomeID, req, res, next) => {
 }
 
 module.exports = {
-    readMotorhomes, searchMotorhomeByBrand, 
+    readMotorhomes, searchMotorhomeByBrand, searchMotorhomeById, 
     createMotorhome, updateMotorhome, deleteMotorhome
 }

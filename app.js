@@ -47,6 +47,10 @@ app.get('/createnewmotorhome', (req, res) => {
     res.sendFile(__dirname + '/public/createnewmotorhome/createnewmotorhome.html');
 });
 
+app.get('/updatemotorhome/:id', (req, res) => {
+    res.sendFile(__dirname + '/public/updatemotorhome/updatemotorhome.html');
+});
+
 // Post HTTP requests
 // Log in post method
 app.post('/homePage', (req, res) => {

@@ -50,3 +50,14 @@ button {
     margin-top: 2rem;
     background-color: rgb(214, 117, 117);
 }
+
+.update {
+    margin-top: 2rem;
+    margin-left: 2rem;
+    background-color: rgb(216, 190, 42);
+}
+
+.div-buttons {
+    display: flex;
+    flex-direction: row;
+}
