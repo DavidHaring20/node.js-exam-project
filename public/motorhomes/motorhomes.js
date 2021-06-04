@@ -67,12 +67,16 @@
             const divLongData = document.createElement('div');
             divLongData.classList.add('div-long-data');
 
+            const deleteDiv = document.createElement('div');
+            const updateDiv = document.createElement('div');
+            
             const divButtons = document.createElement('div');
             divButtons.classList.add('div-buttons');
 
             // FORMS
-            // Delete form
             let id = motorhome._id;
+
+            // Delete form
             let deleteForm = document.createElement('form');
             deleteForm.setAttribute('method', 'post');
             deleteForm.setAttribute('action', '/deletemotorhome/' + id); 
@@ -86,10 +90,19 @@
             // Add Delete Button to Delete Form
             deleteForm.appendChild(deleteButton);
 
-            // // Update button
-            // const updateButton = document.createElement('button');
-            // updateButton.classList.add('update');
-            // updateButton.innerText = "Update Motorhome";
+            // Update form
+            let updateForm = document.createElement('form');
+            updateForm.setAttribute('method', 'get');
+            updateForm.setAttribute('action', '/updatemotorhome/' + id);
+
+            // Update button
+            const updateButton = document.createElement('button');
+            updateButton.classList.add('update');
+            updateButton.innerText = "Update Motorhome";
+            updateButton.setAttribute('type', 'submit');
+
+            // Add Update Button to Update Form
+            updateForm.appendChild(updateButton);
 
             // Horizontal line to make it more readable
             const horizontalLine = document.createElement('hr');
@@ -111,7 +124,7 @@
 
             // Buttons
             deleteDiv.appendChild(deleteForm);
-            updateDiv.appendChild(updateLink);
+            updateDiv.appendChild(updateForm);
             divButtons.appendChild(deleteDiv);
             divButtons.appendChild(updateDiv);
 
