@@ -1,0 +1,1 @@
+// fetch("/api/motorhome/searchById/60b9e7fb43e5b64a8c039eba").then(res => res.json()).then(res => console.log(res.response));

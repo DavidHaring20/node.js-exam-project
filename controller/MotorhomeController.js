@@ -32,10 +32,15 @@ const searchMotorhomeByBrand = (req, res, next) => {
 };
 
 // Search for a specific motorhome by ID
-const searchMotorhomeById = (motorhomeID, req, res, next) => {
+//const searchMotorhomeById = (motorhomeID, req, res, next) => {
+const searchMotorhomeById = (req, res, next) => {
+    let motorhomeID = req.params.id;
+    console.log("MotorhomeID: " + motorhomeID);
     Motorhome.findById(motorhomeID)
-    .then(() => {
-        console.log("Motorhome with ID: " + motorhomeID + " is found.");
+    .then(response => {
+        res.json({
+            response
+        })
     })
     .catch(error => {
         console.log(error);

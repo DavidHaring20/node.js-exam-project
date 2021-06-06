@@ -20,7 +20,7 @@ db.once('open', () => {
 
 // App use methods
 app.use(express.static("public"));
-app.use(bodyparser.json());
+app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Routers 
@@ -47,8 +47,12 @@ app.get('/createnewmotorhome', (req, res) => {
     res.sendFile(__dirname + '/public/createnewmotorhome/createnewmotorhome.html');
 });
 
-app.get('/updatemotorhome/:id', (req, res) => {
+app.get('/updatemotorhome', (req, res) => {
     res.sendFile(__dirname + '/public/updatemotorhome/updatemotorhome.html');
+});
+
+app.get('/updatemotorhome/:id', (req, res) => {
+    res.redirect('/updatemotorhome');
 });
 
 // Post HTTP requests
