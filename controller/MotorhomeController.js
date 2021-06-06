@@ -1,4 +1,8 @@
 const Motorhome = require('../model/Motorhome');
+const LocalStorage      = require('node-localstorage').LocalStorage;
+const localStorage      = new LocalStorage('./localstorage');
+
+console.log(localStorage);
 
 // Show list of motorhomes
 const readMotorhomes = (req, res, next) => {
@@ -34,7 +38,7 @@ const searchMotorhomeByBrand = (req, res, next) => {
 // Search for a specific motorhome by ID
 //const searchMotorhomeById = (motorhomeID, req, res, next) => {
 const searchMotorhomeById = (req, res, next) => {
-    let motorhomeID = req.params.id;
+    let motorhomeID = localStorage.getItem('updateId');
     console.log("MotorhomeID: " + motorhomeID);
     Motorhome.findById(motorhomeID)
     .then(response => {

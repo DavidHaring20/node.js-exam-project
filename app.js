@@ -4,7 +4,8 @@ const bcrypt            = require('bcrypt');
 const express           = require('express');
 const app               = express();
 const mongoose          = require('mongoose');
-const bodyparser        = require('body-parser');
+const LocalStorage      = require('node-localstorage').LocalStorage;
+const localStorage      = new LocalStorage('./localstorage');
 
 // Connection to database for development
 mongoose.connect('mongodb://localhost:27017/nordicMotorhomeRentalDb', { useNewUrlParser: true, useUnifiedTopology: true });
@@ -52,6 +53,8 @@ app.get('/updatemotorhome', (req, res) => {
 });
 
 app.get('/updatemotorhome/:id', (req, res) => {
+    localStorage.setItem('updateId', req.params.id);
+
     res.redirect('/updatemotorhome');
 });
 
