@@ -1,6 +1,8 @@
 // Imports/requirements
 const { urlencoded }    = require('express');
-const bcrypt            = require('bcrypt');
+// const bcrypt            = require('bcrypt');
+// const saltRounds         = 12;
+// const myPass            = "v3ryH4rDP4$$w0rd";
 const express           = require('express');
 const app               = express();
 const mongoose          = require('mongoose');
@@ -13,11 +15,19 @@ const db = mongoose.connection;
 
 db.on('error', (error) => {
     console.log(error);
-})
+});
 
 db.once('open', () => {
     console.log("Connection to database is successfull.");
-})   
+});
+
+// // Hash password
+// bcrypt.genSalt(saltRounds, (err, salt) =>{
+//     bcrypt.hash(myPass, salt, (err, hash) => {
+//         localStorage.setItem('username', "David Haring");
+//         localStorage.setItem('password', hash);
+//     });
+// });
 
 // App use methods
 app.use(express.static("public"));

@@ -37,7 +37,7 @@ const searchMotorhomeByBrand = (req, res, next) => {
 //const searchMotorhomeById = (motorhomeID, req, res, next) => {
 const searchMotorhomeById = (req, res, next) => {
     let motorhomeID = localStorage.getItem('updateId');
-    console.log("MotorhomeID: " + motorhomeID);
+    
     Motorhome.findById(motorhomeID)
     .then(response => {
         res.json({
@@ -86,8 +86,6 @@ const updateMotorhome = (motorhomeID, brand, model, type, gasType, numberOfSeats
         condition : condition,
         additionalInfo: additionalInfo
     }
-    // console.log("MotorhomeController: 89 => " + updatedData.brand);
-    // console.log("MotorhomeController: 90 => Id: " + id);
 
     Motorhome.findByIdAndUpdate(id, {$set: updatedData}, {useFindAndModify: false})
     .then(() => {
