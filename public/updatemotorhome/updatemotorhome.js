@@ -46,7 +46,7 @@
         const typeLabel = document.createElement('label');
         typeLabel.innerText = "Type: ";
         const typeInput = document.createElement('input');
-        typeInput.setAttribute('name', 'model');
+        typeInput.setAttribute('name', 'type');
         typeInput.setAttribute('type', 'text');
         typeInput.setAttribute('value', motorhomeObject.type);
         
@@ -59,7 +59,7 @@
         const gasTypeLabel = document.createElement('label');
         gasTypeLabel.innerText = "Gas Type: ";
         const gasTypeInput = document.createElement('input');
-        gasTypeInput.setAttribute('name', 'model');
+        gasTypeInput.setAttribute('name', 'gasType');
         gasTypeInput.setAttribute('type', 'text');
         gasTypeInput.setAttribute('value', motorhomeObject.gasType);
         
@@ -72,7 +72,7 @@
         const numberOfSeatsLabel = document.createElement('label');
         numberOfSeatsLabel.innerText = "Number Of Seats: ";
         const numberOfSeatsInput = document.createElement('input');
-        numberOfSeatsInput.setAttribute('name', 'model');
+        numberOfSeatsInput.setAttribute('name', 'numberOfSeats');
         numberOfSeatsInput.setAttribute('type', 'text');
         numberOfSeatsInput.setAttribute('value', motorhomeObject.numberOfSeats);
         
@@ -85,7 +85,7 @@
         const odometerLabel = document.createElement('label');
         odometerLabel.innerText = "Odometer: ";
         const odometerInput = document.createElement('input');
-        odometerInput.setAttribute('name', 'model');
+        odometerInput.setAttribute('name', 'odometer');
         odometerInput.setAttribute('type', 'number');
         odometerInput.setAttribute('value', motorhomeObject.odometer);
         
@@ -98,7 +98,7 @@
         const yearOfManufactureLabel = document.createElement('label');
         yearOfManufactureLabel.innerText = "Year Of Manufacture: ";
         const yearOfManufactureInput = document.createElement('input');
-        yearOfManufactureInput.setAttribute('name', 'model');
+        yearOfManufactureInput.setAttribute('name', 'yearOfManufacture');
         yearOfManufactureInput.setAttribute('type', 'text');
         yearOfManufactureInput.setAttribute('value', motorhomeObject.yearOfManufacture);
         
@@ -111,7 +111,7 @@
         const conditionLabel = document.createElement('label');
         conditionLabel.innerText = "Condition: ";
         const conditionInput = document.createElement('input');
-        conditionInput.setAttribute('name', 'model');
+        conditionInput.setAttribute('name', 'condition');
         conditionInput.setAttribute('type', 'text');
         conditionInput.setAttribute('value', motorhomeObject.condition);
         
@@ -125,23 +125,37 @@
         additionalInfoLabel.innerText = "Additional Info: ";
         const additionalInfoInput = document.createElement('input');
         additionalInfoInput.classList.add('input-field');
-        additionalInfoInput.setAttribute('name', 'model');
+        additionalInfoInput.setAttribute('name', 'additionalInfo');
         additionalInfoInput.setAttribute('type', 'text');
         additionalInfoInput.setAttribute('value', motorhomeObject.additionalInfo);
         
         formDiv9.appendChild(additionalInfoLabel);
         formDiv9.appendChild(additionalInfoInput);
 
+        // Create form 
+        const updateForm = document.createElement('form');
+        updateForm.setAttribute('method', 'post');
+        updateForm.setAttribute('action', '/updatemotorhome');
+
+        // Create submit button
+        const submitButton = document.createElement('button');
+        submitButton.classList.add('submit-button');
+        submitButton.innerText = "Update";
+        submitButton.setAttribute('type', 'submit');
+
+        updateForm.appendChild(formDiv1);
+        updateForm.appendChild(formDiv2);
+        updateForm.appendChild(formDiv3);
+        updateForm.appendChild(formDiv4);
+        updateForm.appendChild(formDiv5);
+        updateForm.appendChild(formDiv6);
+        updateForm.appendChild(formDiv7);
+        updateForm.appendChild(formDiv8);
+        updateForm.appendChild(formDiv9);
+        updateForm.appendChild(submitButton);
+
         // Appending child elements to main div in HTML
-        motorhomeDiv.appendChild(formDiv1);
-        motorhomeDiv.appendChild(formDiv2);
-        motorhomeDiv.appendChild(formDiv3);
-        motorhomeDiv.appendChild(formDiv4);
-        motorhomeDiv.appendChild(formDiv5);
-        motorhomeDiv.appendChild(formDiv6);
-        motorhomeDiv.appendChild(formDiv7);
-        motorhomeDiv.appendChild(formDiv8);
-        motorhomeDiv.appendChild(formDiv9);
+        motorhomeDiv.appendChild(updateForm);
         motorhomeDivInHtml.appendChild(motorhomeDiv);
 
     } catch(error) {

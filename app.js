@@ -32,6 +32,10 @@ const MotorhomeController = require('./controller/MotorhomeController.js');
 app.use('/api/motorhome', motorhomeRouter.router);
 
 // Get HTTP requests
+app.get('/', (req, res) => {
+    res.redirect('/login');
+});
+
 app.get('/login', (req, res) => {
     res.sendFile(__dirname + "/public/logIn/logIn.html");
 });
@@ -88,6 +92,24 @@ app.post('/createnewmotorhome', (req, res) => {
 app.post('/deletemotorhome/:id', (req, res) => {
     let motorhomeID = req.params.id;
     MotorhomeController.deleteMotorhome(motorhomeID);
+
+    res.redirect('/motorhomes');
+});
+
+// Updating the Motorhome
+app.post('/updatemotorhome', (req, res) => {
+    let id = localStorage.getItem('updateId');
+    let brand = req.body.brand;
+    let model = req.body.model;
+    let type = req.body.type;
+    let gasType = req.body.gasType;
+    let numberOfSeats = req.body.numberOfSeats;
+    let odometer = req.body.odometer;
+    let yearOfManufacture = req.body.yearOfManufacture;
+    let condition = req.body.condition;
+    let additionalInfo = req.body.additionalInfo;
+    
+    MotorhomeController.updateMotorhome(id, brand, model, type, gasType, numberOfSeats, odometer, yearOfManufacture, condition, additionalInfo);
 
     res.redirect('/motorhomes');
 });

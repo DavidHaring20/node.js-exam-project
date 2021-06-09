@@ -2,8 +2,6 @@ const Motorhome = require('../model/Motorhome');
 const LocalStorage      = require('node-localstorage').LocalStorage;
 const localStorage      = new LocalStorage('./localstorage');
 
-console.log(localStorage);
-
 // Show list of motorhomes
 const readMotorhomes = (req, res, next) => {
     Motorhome.find().
@@ -74,30 +72,29 @@ let createMotorhome = (brand, model, type, gasType, numberOfSeats, odometer, yea
 };
 
 // Update a motorhome
-const updateMotorhome = (req, res, next) => {
-    let motorhomeID = req.body.motorhomeID;
+const updateMotorhome = (motorhomeID, brand, model, type, gasType, numberOfSeats, odometer, yearOfManufacture, condition, additionalInfo, res, next) => {
+    let id = motorhomeID;
 
     let updatedData = {
-        brand : req.body.brand,
-        model : req.body.model,
-        type : req.body.type,
-        gasType : req.body.gasType,
-        numberOfSeats : req.body.numberOfSeats,
-        odometer : req.body.odometer,
-        yearOfManufacture : req.body.yearOfManufacture,
-        condition : req.body.condition,
-        additionalInfo: req.body.additionalInfo
+        brand : brand,
+        model : model,
+        type : type,
+        gasType : gasType,
+        numberOfSeats : numberOfSeats,
+        odometer : odometer,
+        yearOfManufacture : yearOfManufacture,
+        condition : condition,
+        additionalInfo: additionalInfo
     }
-    Motorhome.findByIdAndUpdate(motorhomeID, {$set: updatedData})
+    // console.log("MotorhomeController: 89 => " + updatedData.brand);
+    // console.log("MotorhomeController: 90 => Id: " + id);
+
+    Motorhome.findByIdAndUpdate(id, {$set: updatedData}, {useFindAndModify: false})
     .then(() => {
-        res.json({
-            message: "Updated Motorhome with ID: "+ motorhomeID
-        })
+        console.log("Motorhome updated succesfully.");
     })
-    .catch(() => {
-        res.json({
-            message: "Error Occured !"
-        }) 
+    .catch(error => {
+        console.log(error);
     })
 };
 
