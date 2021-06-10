@@ -1,8 +1,8 @@
 // Imports/requirements
 const { urlencoded }    = require('express');
-// const bcrypt            = require('bcrypt');
-// const saltRounds         = 12;
-// const myPass            = "v3ryH4rDP4$$w0rd";
+const bcrypt            = require('bcrypt');
+const saltRounds        = 12;
+// const myPass         = "v3ryH4rDP4$$w0rd";
 const express           = require('express');
 const app               = express();
 const mongoose          = require('mongoose');
@@ -76,10 +76,18 @@ app.get('/updatemotorhome/:id', (req, res) => {
 // Log in post method
 app.post('/homePage', (req, res) => {
     const username = req.body.username;
+    const usernameCheck = localStorage.getItem('username');
     const password = req.body.password;
-    console.log(username + " " + password);
+    const passwordCheck = localStorage.getItem('password');
 
-    res.redirect('/homepage');
+    bcrypt.compare(password, passwordCheck, (err, result) => {
+        console.log(result);
+        if (result === true && username === usernameCheck) {
+            console.log();
+            res.redirect('/homepage');
+        } else 
+        res.redirect('/login');
+    });
 });
 
 // Creating new Motorhome
