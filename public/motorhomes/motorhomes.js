@@ -52,6 +52,16 @@
             condition.classList.add('condition');
             condition.innerText = "Condition: " + motorhome.condition;
 
+            // Code
+            const code = document.createElement('div');
+            code.classList.add('code');
+            code.innerText = "Code: " + motorhome.code;
+
+            // Status
+            const status = document.createElement('div');
+            status.classList.add('status');
+            status.innerText = "Status: " + motorhome.status;
+
             // Additional info 
             const additionalInfo = document.createElement('div');
             additionalInfo.classList.add('additionalInfo');
@@ -110,6 +120,7 @@
 
             // Firstly append data to smaller divs and then later to one div as a whole
             // Short info like: type, model, brand...
+            divShortData1.appendChild(code);
             divShortData1.appendChild(brand);
             divShortData1.appendChild(model);
             divShortData1.appendChild(type);

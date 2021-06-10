@@ -28,6 +28,12 @@ const motorhomeSchema = new Schema({
     },
     additionalInfo: {
         type: String
+    },
+    code: {
+        type: String
+    },
+    status: {
+        type: String
     }
 }, { timestamps: true })
 

@@ -92,6 +92,8 @@ app.post('/homePage', (req, res) => {
 
 // Creating new Motorhome
 app.post('/createnewmotorhome', (req, res) => {
+    console.log(req.body);
+
     MotorhomeController.createMotorhome(
         req.body.brand,
         req.body.model,
@@ -101,7 +103,9 @@ app.post('/createnewmotorhome', (req, res) => {
         req.body.odometer,
         req.body.yearOfManufacture,
         req.body.condition,
-        req.body.additionalInfo
+        req.body.additionalInfo,
+        req.body.code, 
+        req.body.status
     );
     res.redirect('/motorhomes');
 });

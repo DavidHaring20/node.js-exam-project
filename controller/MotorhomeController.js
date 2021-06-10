@@ -1,4 +1,4 @@
-const Motorhome = require('../model/Motorhome');
+const Motorhome         = require('../model/Motorhome');
 const LocalStorage      = require('node-localstorage').LocalStorage;
 const localStorage      = new LocalStorage('./localstorage');
 
@@ -50,7 +50,7 @@ const searchMotorhomeById = (req, res, next) => {
 }
 
 // Create new motorhome
-let createMotorhome = (brand, model, type, gasType, numberOfSeats, odometer, yearOfManufacture, condition, additionalInfo, req, res, next) => {
+let createMotorhome = (brand, model, type, gasType, numberOfSeats, odometer, yearOfManufacture, condition, additionalInfo, code, status, req, res, next) => {
     let motorhome = new Motorhome({
         brand : brand,
         model : model,
@@ -60,7 +60,9 @@ let createMotorhome = (brand, model, type, gasType, numberOfSeats, odometer, yea
         odometer : odometer,
         yearOfManufacture : yearOfManufacture,
         condition : condition,
-        additionalInfo: additionalInfo
+        additionalInfo: additionalInfo,
+        code: code,
+        status: status
     });
     motorhome.save()
     .then(() => {
