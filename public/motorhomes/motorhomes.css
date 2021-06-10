@@ -32,7 +32,7 @@ button {
 }
 
 .brand, .model, .type, .gasType, .numberOfSeats, 
-.odometer, .yearOfManufacture, .condition {
+.odometer, .yearOfManufacture, .condition, .code {
     width: 100%;
     margin-bottom: 1rem;
 } 
@@ -60,4 +60,13 @@ button {
 .div-buttons {
     display: flex;
     flex-direction: row;
+}
+
+.code {
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.div-data {
+    padding: 2em 0em 2em 2em;
 }

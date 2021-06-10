@@ -12,6 +12,28 @@
             const motorhomeDiv = document.createElement('div');
             motorhomeDiv.classList.add('motorhome-div');
 
+            // Divs to separate and style data better
+            const divForData = document.createElement('div');
+            divForData.classList.add('div-data');
+
+            const divShortData0 = document.createElement('div');
+            divShortData0.classList.add('div-short-data0');
+
+            const divShortData1 = document.createElement('div');
+            divShortData1.classList.add('div-short-data1');
+
+            const divShortData2 = document.createElement('div');
+            divShortData2.classList.add('div-short-data2');
+
+            const divLongData = document.createElement('div');
+            divLongData.classList.add('div-long-data');
+
+            const deleteDiv = document.createElement('div');
+            const updateDiv = document.createElement('div');
+            
+            const divButtons = document.createElement('div');
+            divButtons.classList.add('div-buttons');
+
             // Brand 
             const brand = document.createElement('div');
             brand.classList.add('brand');
@@ -60,28 +82,21 @@
             // Status
             const status = document.createElement('div');
             status.classList.add('status');
+            console.log(motorhome.status);
             status.innerText = "Status: " + motorhome.status;
+            if (motorhome.status === "Not Available") {
+                divForData.style.backgroundColor = "rgb(214, 117, 117)";
+                divForData.style.border = "3px solid red";
+            } else if (motorhome.status === "On Service") {
+                divForData.style.backgroundColor = "rgb(216, 190, 42)";
+                divForData.style.border = "3px solid orange";
+            }
 
             // Additional info 
             const additionalInfo = document.createElement('div');
             additionalInfo.classList.add('additionalInfo');
             additionalInfo.innerText = "Additional info: " + motorhome.additionalInfo;
 
-            // Divs to separate and style data better
-            const divShortData1 = document.createElement('div');
-            divShortData1.classList.add('div-short-data1');
-
-            const divShortData2 = document.createElement('div');
-            divShortData2.classList.add('div-short-data2');
-
-            const divLongData = document.createElement('div');
-            divLongData.classList.add('div-long-data');
-
-            const deleteDiv = document.createElement('div');
-            const updateDiv = document.createElement('div');
-            
-            const divButtons = document.createElement('div');
-            divButtons.classList.add('div-buttons');
 
             // FORMS
             let id = motorhome._id;
@@ -120,7 +135,7 @@
 
             // Firstly append data to smaller divs and then later to one div as a whole
             // Short info like: type, model, brand...
-            divShortData1.appendChild(code);
+            divShortData0.appendChild(code);
             divShortData1.appendChild(brand);
             divShortData1.appendChild(model);
             divShortData1.appendChild(type);
@@ -130,8 +145,14 @@
             divShortData2.appendChild(yearOfManufacture);
             divShortData2.appendChild(condition);
 
+            divForData.appendChild(divShortData0);
+            divForData.appendChild(divShortData1);
+            divForData.appendChild(divShortData2);
+
             // Additional info
             divLongData.appendChild(additionalInfo);
+
+            divForData.appendChild(divLongData);
 
             // Buttons
             deleteDiv.appendChild(deleteForm);
@@ -140,9 +161,10 @@
             divButtons.appendChild(updateDiv);
 
             // Appending everything to one div as a whole
-            motorhomeDiv.appendChild(divShortData1);
-            motorhomeDiv.appendChild(divShortData2);            
-            motorhomeDiv.appendChild(divLongData);
+            motorhomeDiv.appendChild(divForData);
+            // motorhomeDiv.appendChild(divShortData1);
+            // motorhomeDiv.appendChild(divShortData2);            
+            // motorhomeDiv.appendChild(divLongData);
             motorhomeDiv.appendChild(divButtons);            
             motorhomeDiv.appendChild(horizontalLine);
 
