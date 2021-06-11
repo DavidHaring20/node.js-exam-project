@@ -70,3 +70,33 @@ button {
 .div-data {
     padding: 2em 0em 2em 2em;
 }
+
+.div-legend {
+    margin-bottom: 2rem;
+    border-bottom: 2px solid black;
+    padding-bottom: 1rem;
+    width: 70%
+}
+
+.div-legend, .not-available, .on-service{
+    display: flex;
+    flex-direction: row;
+    font-size: 26px;
+}
+
+.on-service-sign {
+    width: 20px;
+    height: 20px;
+    background-color: rgb(216, 190, 42);
+    border: 3px solid orange;
+    margin-right: 30px;
+    margin-left: 20px;
+}
+
+.not-available-sign {
+    width: 20px;
+    height: 20px;
+    background-color: rgb(214, 117, 117);
+    border: 3px solid red;
+    margin-right: 30px;
+}
