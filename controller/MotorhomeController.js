@@ -74,7 +74,7 @@ let createMotorhome = (brand, model, type, gasType, numberOfSeats, odometer, yea
 };
 
 // Update a motorhome
-const updateMotorhome = (motorhomeID, brand, model, type, gasType, numberOfSeats, odometer, yearOfManufacture, condition, additionalInfo, res, next) => {
+const updateMotorhome = (motorhomeID, brand, model, type, gasType, numberOfSeats, odometer, yearOfManufacture, condition, additionalInfo, code, status, res, next) => {
     let id = motorhomeID;
 
     let updatedData = {
@@ -86,7 +86,9 @@ const updateMotorhome = (motorhomeID, brand, model, type, gasType, numberOfSeats
         odometer : odometer,
         yearOfManufacture : yearOfManufacture,
         condition : condition,
-        additionalInfo: additionalInfo
+        additionalInfo: additionalInfo,
+        code: code,
+        status: status
     }
 
     Motorhome.findByIdAndUpdate(id, {$set: updatedData}, {useFindAndModify: false})

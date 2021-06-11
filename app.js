@@ -68,7 +68,6 @@ app.get('/updatemotorhome', (req, res) => {
 
 app.get('/updatemotorhome/:id', (req, res) => {
     localStorage.setItem('updateId', req.params.id);
-
     res.redirect('/updatemotorhome');
 });
 
@@ -120,6 +119,8 @@ app.post('/deletemotorhome/:id', (req, res) => {
 
 // Updating the Motorhome
 app.post('/updatemotorhome', (req, res) => {
+    console.log(req.body);
+
     let id = localStorage.getItem('updateId');
     let brand = req.body.brand;
     let model = req.body.model;
@@ -130,8 +131,10 @@ app.post('/updatemotorhome', (req, res) => {
     let yearOfManufacture = req.body.yearOfManufacture;
     let condition = req.body.condition;
     let additionalInfo = req.body.additionalInfo;
+    let code = req.body.code;
+    let status = req.body.status;
     
-    MotorhomeController.updateMotorhome(id, brand, model, type, gasType, numberOfSeats, odometer, yearOfManufacture, condition, additionalInfo);
+    MotorhomeController.updateMotorhome(id, brand, model, type, gasType, numberOfSeats, odometer, yearOfManufacture, condition, additionalInfo, code, status);
 
     res.redirect('/motorhomes');
 });

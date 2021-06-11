@@ -132,6 +132,36 @@
         formDiv9.appendChild(additionalInfoLabel);
         formDiv9.appendChild(additionalInfoInput);
 
+        // Code
+        const formDiv10 = document.createElement('div');
+        formDiv10.classList.add('form-div');
+        const codeLabel = document.createElement('label');
+        codeLabel.innerText = "Code: ";
+        codeLabel.classList.add('label');
+        const codeInput = document.createElement('input');
+        codeInput.classList.add('input-field');
+        codeInput.setAttribute('name', 'code');
+        codeInput.setAttribute('type', 'text');
+        codeInput.setAttribute('value', motorhomeObject.code);
+
+        formDiv10.appendChild(codeLabel);
+        formDiv10.appendChild(codeInput);
+
+        // Status
+        const formDiv11 = document.createElement('div');
+        formDiv11.classList.add('form-div');
+        const statusLabel = document.createElement('label');
+        statusLabel.classList.add('label');
+        statusLabel.innerText = "Status: ";
+        const statusInput = document.createElement('input');
+        statusInput.classList.add('input-field');
+        statusInput.setAttribute('name', 'status');
+        statusInput.setAttribute('type', 'text');
+        statusInput.setAttribute('value', motorhomeObject.status);
+
+        formDiv11.appendChild(statusLabel);
+        formDiv11.appendChild(statusInput);
+
         // Create form 
         const updateForm = document.createElement('form');
         updateForm.setAttribute('method', 'post');
@@ -152,6 +182,8 @@
         updateForm.appendChild(formDiv7);
         updateForm.appendChild(formDiv8);
         updateForm.appendChild(formDiv9);
+        updateForm.appendChild(formDiv10);
+        updateForm.appendChild(formDiv11);
         updateForm.appendChild(submitButton);
 
         // Appending child elements to main div in HTML
