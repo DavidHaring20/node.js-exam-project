@@ -16,6 +16,10 @@ h1 {
     margin: 3em 2em;
 }
 
+.space-right-red {
+    margin-right: 2em;
+}
+
 button {
     padding: 10px 20px;
     color: black;
@@ -72,6 +76,7 @@ button {
 }
 
 .div-legend {
+    margin-left: 1.3em;
     margin-bottom: 2rem;
     border-bottom: 2px solid black;
     padding-bottom: 1rem;

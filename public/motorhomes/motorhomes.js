@@ -13,9 +13,6 @@
             motorhomeDiv.classList.add('motorhome-div');
 
             // Divs to separate and style data better
-            const divLegend = document.createElement('div');
-            divLegend.classList.add('div-legend');
-
             const divForData = document.createElement('div');
             divForData.classList.add('div-data');
 
@@ -36,32 +33,6 @@
             
             const divButtons = document.createElement('div');
             divButtons.classList.add('div-buttons');
-
-            // Legend
-            const divLegendNotAvailable = document.createElement('div');
-            divLegendNotAvailable.classList.add('not-available');
-            const divLegendNotAvailableSign = document.createElement('div');
-            divLegendNotAvailableSign.classList.add('not-available-sign');
-            const divLegendNotAvailableText = document.createElement('div');
-            divLegendNotAvailableText.classList.add('not-available-text');
-            divLegendNotAvailableText.innerText = "Not Available";
-
-            divLegendNotAvailable.appendChild(divLegendNotAvailableSign);
-            divLegendNotAvailable.appendChild(divLegendNotAvailableText);
-
-            const divLegendOnService = document.createElement('div');
-            divLegendOnService.classList.add('on-service');
-            const divLegendOnServiceSign = document.createElement('div');
-            divLegendOnServiceSign.classList.add('on-service-sign');
-            const divLegendOnServiceText = document.createElement('div');
-            divLegendOnServiceText.classList.add('on-service-text');
-            divLegendOnServiceText.innerText = "On Service";
-
-            divLegendOnService.appendChild(divLegendOnServiceSign);
-            divLegendOnService.appendChild(divLegendOnServiceText);
-
-            divLegend.appendChild(divLegendNotAvailable);
-            divLegend.appendChild(divLegendOnService);
 
             // Brand 
             const brand = document.createElement('div');
@@ -174,7 +145,6 @@
             divShortData2.appendChild(yearOfManufacture);
             divShortData2.appendChild(condition);
 
-            divForData.appendChild(divLegend);
             divForData.appendChild(divShortData0);
             divForData.appendChild(divShortData1);
             divForData.appendChild(divShortData2);
