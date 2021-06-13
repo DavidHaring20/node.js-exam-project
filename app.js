@@ -8,6 +8,16 @@ const app               = express();
 const mongoose          = require('mongoose');
 const LocalStorage      = require('node-localstorage').LocalStorage;
 const localStorage      = new LocalStorage('./localstorage');
+const server            = require('http').createServer(app);
+const io                = require('socket.io')(server);
+
+io.on("connection", socket => {
+    console.log("Connected socket with id: " + socket.id);
+
+    socket.on("disconnect", (socket) => {
+        console.log("Socket disconnected.");
+    })
+});
 
 // Connection to database for development
 mongoose.connect('mongodb://localhost:27017/nordicMotorhomeRentalDb', { useNewUrlParser: true, useUnifiedTopology: true });
@@ -42,6 +52,10 @@ const MotorhomeController = require('./controller/MotorhomeController.js');
 app.use('/api/motorhome', motorhomeRouter.router);
 
 // Get HTTP requests
+app.get('/node_modules/socket.io/client-dist/socket.io.js', (req, res) => {
+    res.sendFile(__dirname + '/node_modules/socket.io/client-dist/socket.io.js');
+});
+
 app.get('/', (req, res) => {
     res.redirect('/login');
 });
@@ -80,9 +94,7 @@ app.post('/homePage', (req, res) => {
     const passwordCheck = localStorage.getItem('password');
 
     bcrypt.compare(password, passwordCheck, (err, result) => {
-        console.log(result);
         if (result === true && username === usernameCheck) {
-            console.log();
             res.redirect('/homepage');
         } else 
         res.redirect('/login');
@@ -140,9 +152,9 @@ app.post('/updatemotorhome', (req, res) => {
 });
 
 // Method for starting the server
-app.listen(8080, (error) => {
+server.listen(8080, (error) => {
     if (error) {
         console.log(error);
     }
-    console.log("App is running on port: " + 8080 + ". \nApp URL is: localhost:8080/");
+    console.log("Server is running on port: " + 8080 + ". \nServer URL is: localhost:8080/");
 });
