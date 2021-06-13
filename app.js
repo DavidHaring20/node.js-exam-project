@@ -1,5 +1,5 @@
 // Imports/requirements
-let mongoDbUrl          = "mongodb://new-user:veryhardpassword@dh-cluster-nmr-shard-00-00.n435h.mongodb.net:27017,dh-cluster-nmr-shard-00-01.n435h.mongodb.net:27017,dh-cluster-nmr-shard-00-02.n435h.mongodb.net:27017/nordicMotorhomeRental?ssl=true&replicaSet=atlas-hniznx-shard-0&authSource=admin&retryWrites=true&w=majority";
+let mongoDbUrl          = "mongodb://new-user:veryhardpassword@dh-cluster-nmr-shard-00-00.n435h.mongodb.net:27017,dh-cluster-nmr-shard-00-01.n435h.mongodb.net:27017,dh-cluster-nmr-shard-00-02.n435h.mongodb.net:27017/nordicMotorhomeRentalDb?ssl=true&replicaSet=atlas-hniznx-shard-0&authSource=admin&retryWrites=true&w=majority";
 const { urlencoded }    = require('express');
 const bcrypt            = require('bcrypt');
 const saltRounds        = 12;
