@@ -10,6 +10,7 @@ const LocalStorage      = require('node-localstorage').LocalStorage;
 const localStorage      = new LocalStorage('./localstorage');
 const server            = require('http').createServer(app);
 const io                = require('socket.io')(server);
+let PORT                = process.env.PORT || 8080;
 
 io.on("connection", socket => {
     console.log("Connected socket with id: " + socket.id);
@@ -142,9 +143,9 @@ app.post('/updatemotorhome', (req, res) => {
 });
 
 // Method for starting the server
-server.listen(8080, (error) => {
+server.listen(PORT, (error) => {
     if (error) {
         console.log(error);
     }
-    console.log("Server is running on port: " + 8080 + ". \nServer URL is: localhost:8080/");
+    console.log("Server is running on port: " + PORT + ". \nServer URL is: localhost:PORT/");
 });
