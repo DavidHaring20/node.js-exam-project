@@ -1,8 +1,8 @@
 // Imports/requirements
+let mongoDbUrl          = "mongodb://new-user:veryhardpassword@dh-cluster-nmr-shard-00-00.n435h.mongodb.net:27017,dh-cluster-nmr-shard-00-01.n435h.mongodb.net:27017,dh-cluster-nmr-shard-00-02.n435h.mongodb.net:27017/nordicMotorhomeRental?ssl=true&replicaSet=atlas-hniznx-shard-0&authSource=admin&retryWrites=true&w=majority";
 const { urlencoded }    = require('express');
 const bcrypt            = require('bcrypt');
 const saltRounds        = 12;
-// const myPass         = "v3ryH4rDP4$$w0rd";
 const express           = require('express');
 const app               = express();
 const mongoose          = require('mongoose');
@@ -20,7 +20,7 @@ io.on("connection", socket => {
 });
 
 // Connection to database for development
-mongoose.connect('mongodb://localhost:27017/nordicMotorhomeRentalDb', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(mongoDbUrl, {useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection; 
 
 db.on('error', (error) => {
@@ -31,21 +31,15 @@ db.once('open', () => {
     console.log("Connection to database is successfull.");
 });
 
-// // Hash password
-// bcrypt.genSalt(saltRounds, (err, salt) =>{
-//     bcrypt.hash(myPass, salt, (err, hash) => {
-//         localStorage.setItem('username', "David Haring");
-//         localStorage.setItem('password', hash);
-//     });
-// });
-
 // App use methods
 app.use(express.static("public"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Routers 
+// Router 
 const motorhomeRouter = require('./routes/motorhomeRoutes.js');
+
+// Controller
 const MotorhomeController = require('./controller/MotorhomeController.js');
 
 // App use exported modules
@@ -103,8 +97,6 @@ app.post('/homePage', (req, res) => {
 
 // Creating new Motorhome
 app.post('/createnewmotorhome', (req, res) => {
-    console.log(req.body);
-
     MotorhomeController.createMotorhome(
         req.body.brand,
         req.body.model,
@@ -131,8 +123,6 @@ app.post('/deletemotorhome/:id', (req, res) => {
 
 // Updating the Motorhome
 app.post('/updatemotorhome', (req, res) => {
-    console.log(req.body);
-
     let id = localStorage.getItem('updateId');
     let brand = req.body.brand;
     let model = req.body.model;

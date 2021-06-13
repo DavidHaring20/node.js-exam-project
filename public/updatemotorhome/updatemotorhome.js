@@ -1,5 +1,3 @@
-// fetch("/api/motorhome/searchById").then(res => res.json()).then(res => console.log(res.response));
-
 (async function read() {
     try {
         // Fetch data from API
